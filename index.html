@@ -30,6 +30,8 @@
     --slot4: #0891b2;
     --slot5: #16a34a;
     --slot6: #7c3aed;
+    --slot7: #16a34a;
+    --slot8: #ea580c;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -159,6 +161,9 @@
   .s3 .slot-dot { background:var(--slot4); }
   .s4 .slot-dot { background:var(--slot5); }
   .s5 .slot-dot { background:var(--slot6); }
+  .s6 .slot-dot { background:var(--slot5); }
+  .s7 .slot-dot { background:var(--slot3); }
+  .s8 .slot-dot { background:var(--slot3); }
 
   /* FORM */
   .form-group { margin-bottom:1rem; }
@@ -205,7 +210,7 @@
   .schedule-body { padding:1.4rem; }
 
   /* WEEK GRID */
-  .week-grid { display:grid; grid-template-columns:78px repeat(5,1fr); gap:5px; min-width:480px; }
+  .week-grid { display:grid; grid-template-columns:78px repeat(5,1fr); gap:5px; min-width:520px; }
   .week-day-header { text-align:center; padding:0.4rem; font-size:0.68rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:var(--muted); }
   .week-day-header.today-col { color:var(--accent2); }
   .time-label { font-size:0.65rem; color:var(--muted); text-align:right; padding-right:7px; display:flex; align-items:center; justify-content:flex-end; font-weight:600; }
@@ -222,6 +227,9 @@
   .booking-card.s3 { background:rgba(8,145,178,0.10); border-color:var(--slot4); }
   .booking-card.s4 { background:rgba(22,163,74,0.10); border-color:var(--slot5); }
   .booking-card.s5 { background:rgba(124,58,237,0.10); border-color:var(--slot6); }
+  .booking-card.s6 { background:rgba(22,163,74,0.10); border-color:var(--slot5); }
+  .booking-card.s7 { background:rgba(234,88,12,0.10); border-color:var(--slot3); }
+  .booking-card.s8 { background:rgba(234,88,12,0.10); border-color:var(--slot3); }
   .booking-card .bc-name { font-weight:700; }
   .booking-card .bc-who { color:var(--muted); font-size:0.6rem; }
   .booking-card.mine { outline:1px solid rgba(79,207,142,0.5); }
@@ -2069,12 +2077,15 @@ eIrgwT3aYJ//2Q==);background-size:cover;background-position:center;opacity:0.22;
             <div id="selectedDateLabel" style="font-size:0.78rem;color:var(--muted);margin-bottom:1rem;text-align:center">Selecciona un dia al calendari</div>
             <label>Franja horària</label>
             <div class="slots-grid" id="slotsGrid">
-              <div class="slot-btn s0" data-slot="0" onclick="selectSlot(0)"><div class="slot-dot"></div>9:00–10:30</div>
-              <div class="slot-btn s1" data-slot="1" onclick="selectSlot(1)"><div class="slot-dot"></div>10:30–11:00</div>
-              <div class="slot-btn s2" data-slot="2" onclick="selectSlot(2)"><div class="slot-dot"></div>11:00–12:30</div>
-              <div class="slot-btn s3" data-slot="3" onclick="selectSlot(3)"><div class="slot-dot"></div>12:30–14:00</div>
-              <div class="slot-btn s4" data-slot="4" onclick="selectSlot(4)"><div class="slot-dot"></div>14:00–15:00</div>
-              <div class="slot-btn s5" data-slot="5" onclick="selectSlot(5)"><div class="slot-dot"></div>15:00–16:30</div>
+              <div class="slot-btn s0" data-slot="0" onclick="selectSlot(0)"><div class="slot-dot"></div>9:00–9:45</div>
+              <div class="slot-btn s1" data-slot="1" onclick="selectSlot(1)"><div class="slot-dot"></div>9:45–10:30</div>
+              <div class="slot-btn s2" data-slot="2" onclick="selectSlot(2)"><div class="slot-dot"></div>10:30–11:00</div>
+              <div class="slot-btn s3" data-slot="3" onclick="selectSlot(3)"><div class="slot-dot"></div>11:00–11:45</div>
+              <div class="slot-btn s4" data-slot="4" onclick="selectSlot(4)"><div class="slot-dot"></div>11:45–12:30</div>
+              <div class="slot-btn s5" data-slot="5" onclick="selectSlot(5)"><div class="slot-dot"></div>12:30–14:00</div>
+              <div class="slot-btn s6" data-slot="6" onclick="selectSlot(6)"><div class="slot-dot"></div>14:00–15:00</div>
+              <div class="slot-btn s7" data-slot="7" onclick="selectSlot(7)"><div class="slot-dot"></div>15:00–15:45</div>
+              <div class="slot-btn s8" data-slot="8" onclick="selectSlot(8)"><div class="slot-dot"></div>15:45–16:30</div>
             </div>
             <div class="form-group">
               <label>Grup / Classe *</label>
@@ -2292,8 +2303,8 @@ eIrgwT3aYJ//2Q==);background-size:cover;background-position:center;opacity:0.22;
 // ── CONFIG
 const SCHOOL_START = new Date(2026,8,8);
 const SCHOOL_END   = new Date(2027,5,21);
-const SLOTS = ['9:00–10:30','10:30–11:00','11:00–12:30','12:30–14:00','14:00–15:00','15:00–16:30'];
-const SLOT_COLORS = ['var(--slot1)','var(--slot4)','var(--slot2)','var(--slot5)','var(--slot6)','var(--slot3)'];
+const SLOTS = ['9:00–9:45','9:45–10:30','10:30–11:00','11:00–11:45','11:45–12:30','12:30–14:00','14:00–15:00','15:00–15:45','15:45–16:30'];
+const SLOT_COLORS = ['var(--slot1)','var(--slot1)','var(--slot4)','var(--slot2)','var(--slot2)','var(--slot5)','var(--slot6)','var(--slot3)','var(--slot3)'];
 const MONTHS_CA = ['Gener','Febrer','Març','Abril','Maig','Juny','Juliol','Agost','Setembre','Octubre','Novembre','Desembre'];
 const DAYS_LONG = ['Dilluns','Dimarts','Dimecres','Dijous','Divendres'];
 
