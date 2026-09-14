@@ -2307,6 +2307,7 @@ const SLOTS = ['9:00–9:45','9:45–10:30','10:30–11:00','11:00–11:45','11:
 const SLOT_COLORS = ['var(--slot1)','var(--slot1)','var(--slot4)','var(--slot2)','var(--slot2)','var(--slot5)','var(--slot6)','var(--slot3)','var(--slot3)'];
 const MONTHS_CA = ['Gener','Febrer','Març','Abril','Maig','Juny','Juliol','Agost','Setembre','Octubre','Novembre','Desembre'];
 const DAYS_LONG = ['Dilluns','Dimarts','Dimecres','Dijous','Divendres'];
+const DAYS_SHORT = ['Dl','Dt','Dc','Dj','Dv'];
 
 // ── STORAGE
 // ── FIREBASE CONFIG
@@ -2843,7 +2844,7 @@ function renderWeek(){
     const date=addDays(currentWeekStart,d);
     const active=isSchoolDay(date);
     const isT=dateKey(date)===todayKey;
-    html+=`<div class="week-day-header${isT?' today-col':''}" style="${!active?'opacity:0.25':''}">${DAYS_LONG[d].slice(0,2)}<br><span style="font-size:0.82rem;font-weight:400">${date.getDate()}</span></div>`;
+    html+=`<div class="week-day-header${isT?' today-col':''}" style="${!active?'opacity:0.25':''}">${DAYS_SHORT[d]}<br><span style="font-size:0.82rem;font-weight:400">${date.getDate()}</span></div>`;
   }
   SLOTS.forEach((slot,si)=>{
     html+=`<div class="time-label" style="color:${SLOT_COLORS[si]}">${slot.replace('–','–<br>')}</div>`;
